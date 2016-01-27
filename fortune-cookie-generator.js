@@ -5,12 +5,24 @@
 //////////////////////////////////////////
 
 var generateFortuneCookie = function() {
+	
     // This is where your code for the Fortune Cookie generator goes.
     // You will use the fortunesList variable defined lower in this file
     // to supply your fortune cookies with text.
 
     // TODO: Grab the paragraph with the ID
     // `fortune-cookie-text` to be able to insert text into that element.
+	var cookieText = document.getElementById('fortune-cookie-text').innerHTML;
+	if (cookieText != 'Click the button to generate a saying.') {
+		var newListItem = document.createElement('li');
+		newListItem.innerHTML = cookieText;
+		var previousFortunes = document.getElementById('previous-fortunes-container');
+		previousFortunes.appendChild(newListItem);
+	}
+	cookieText = fortunesList[Math.floor(fortunesList.length * Math.random())];
+	console.log(cookieText);
+	document.getElementById('fortune-cookie-text').innerHTML = cookieText;
+
 
     // TODO: Update the Previous Fortunes list with the current `innerHTML`
     // value of `#fortune-cookie-text`. Follow these steps:
@@ -82,3 +94,4 @@ var fortunesList = [
     "Joys are often the shadows, cast by sorrows.",
     "Fortune favors the brave."
 ]
+
